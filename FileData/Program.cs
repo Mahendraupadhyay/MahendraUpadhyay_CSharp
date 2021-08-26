@@ -17,11 +17,11 @@ namespace FileData
                 string result = string.Empty;
                 if (argList1.Contains(args[0]))
                 {
-                  result=  class1.GetVersionNumber(args);
+                  result=  class1.GetVersionNumber(args[1]);
                 }
                 else if (argList2.Contains(args[0]))
                 {
-                   result = class1.GetSize(args).ToString();
+                   result = class1.GetSize(args[1]).ToString();
                 }
 
                 Console.WriteLine(result);
@@ -37,12 +37,12 @@ namespace FileData
     public class Class1
     {
         FileDetails fileDetails = new FileDetails();
-        public string GetVersionNumber(string[] input)
+        public string GetVersionNumber(string input)
         {
             string result = string.Empty;
             try
             { 
-                    result = fileDetails.Version(input[1]);
+                    result = fileDetails.Version(input);
             }
             catch (Exception ex)
             {
@@ -51,12 +51,12 @@ namespace FileData
             return result;
         }
 
-        public int GetSize(string[] input)
+        public int GetSize(string input)
         {
             int result = 0;
             try
             {
-               result = fileDetails.Size(input[1]);
+               result = fileDetails.Size(input);
             }
             catch (Exception ex)
             {

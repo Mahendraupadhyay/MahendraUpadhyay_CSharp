@@ -12,7 +12,7 @@ namespace UnitTestProject1
         public void TestMethod1()
         {
             string[] input = new string[] { "-v", "C:/test.txt" };
-            string result = class1.GetVersionNumber(input);
+            string result = class1.GetVersionNumber(input[1]);
             Assert.IsNotNull(result);
         }
 
@@ -20,7 +20,7 @@ namespace UnitTestProject1
         public void TestMethod2()
         {
             string[] input = new string[] { "-v", "C:/test.txt" };
-            int result = class1.GetSize(input);
+            int result = class1.GetSize(input[1]);
             Assert.IsNotNull(result);
         }
     }
