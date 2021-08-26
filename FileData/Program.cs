@@ -9,12 +9,23 @@ namespace FileData
     {
         public static void Main(string[] args)
         {
+            Class1 class1 = new Class1();
+            Console.WriteLine(class1.GetVersionNumber(args));
+            Console.ReadKey();
+        }
+    }
+
+    public class Class1
+    {
+        public string GetVersionNumber(string[] input)
+        {
+            string result = string.Empty;
             FileDetails fileDetails = new FileDetails();
-            if(args[0]=="-v")
+            if (input[0] == "-v")
             {
-              Console.WriteLine(fileDetails.Version(args[1]));
-                Console.ReadKey();
+                result = fileDetails.Version(input[1]);
             }
+            return result;
         }
     }
 }
