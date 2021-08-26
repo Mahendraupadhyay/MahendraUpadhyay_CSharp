@@ -9,21 +9,58 @@ namespace FileData
     {
         public static void Main(string[] args)
         {
-            Class1 class1 = new Class1();
-            Console.WriteLine(class1.GetVersionNumber(args));
+            try
+            {
+                string[] argList1 = new string[] { "-v", "--v", "/ v", "--version" };
+                string[] argList2 = new string[] { "-s", "--s", "/ s", "--size" };
+                Class1 class1 = new Class1();
+                string result = string.Empty;
+                if (argList1.Contains(args[0]))
+                {
+                  result=  class1.GetVersionNumber(args);
+                }
+                else if (argList2.Contains(args[0]))
+                {
+                   result = class1.GetSize(args).ToString();
+                }
+
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadKey();
         }
     }
 
     public class Class1
     {
+        FileDetails fileDetails = new FileDetails();
         public string GetVersionNumber(string[] input)
         {
             string result = string.Empty;
-            FileDetails fileDetails = new FileDetails();
-            if (input[0] == "-v")
+            try
+            { 
+                    result = fileDetails.Version(input[1]);
+            }
+            catch (Exception ex)
             {
-                result = fileDetails.Version(input[1]);
+                Console.WriteLine(ex.Message);
+            }
+            return result;
+        }
+
+        public int GetSize(string[] input)
+        {
+            int result = 0;
+            try
+            {
+               result = fileDetails.Size(input[1]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             return result;
         }
